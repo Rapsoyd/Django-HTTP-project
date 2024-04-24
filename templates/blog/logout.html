@@ -1,0 +1,10 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <div class="container">
+        <h5>You have been logged out</h5>
+        <hr>
+        <a href="{% url 'login' %}"><button type="button" class="btn btn-info">Log In again</button></a>
+    </div>
+{% endblock content %}
+    

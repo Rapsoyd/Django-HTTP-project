@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="container">
+            <img src="{{ user.profile.avatar.url }}"
+                 class="image-thumbnail"
+                 alt="Картинка профиля"></div>
+        {% if user_form.errors %}
+            <div class="container d-flex align-items-center justify-content-center">
+                <div class="alert alert-warning alert-dismissible fade show w-50 d-block"
+                     role="alert">
+                    {% for key, value in user_form.errors.items %}
+                        <strong>{{ value }}</strong>
+                    {% endfor %}
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert"
+                            aria-label="Close"></button>
+                </div>
+            </div>
+        {% endif %}
+        <div class="container">
+        <form class="form-content"
+              method="post"
+              enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <label>Имя пользователя</label>
+            {{ user_form.username }}
+            <label>Почта</label>
+            {{ user_form.email }}
+            <hr>
+            <label>Поменять аватар</label>
+            {{ profile_form.avatar }}
+            <label>О себе</label>
+            {{ profile_form.bio }}
+
+            <button type="submit"
+                    class="btn btn-primary btn-lg">Save Changes
+            </button>
+            <button type="reset"
+                    class="btn btn-primary btn-lg">Reset
+            </button>
+        </form>
+        </div>
+    </div>
+{% endblock %}

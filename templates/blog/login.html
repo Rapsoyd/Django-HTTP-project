@@ -1,0 +1,16 @@
+{% extends 'main.html' %}
+
+{% block content %}
+  <div class="container">
+    <p>
+      <a href="{% url 'signup' %}" class="link-info link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Sign Up</a>
+    </p>
+    <form method="post" class="form">
+      {% csrf_token %}
+      {{ form.username }}
+      {{ form.password }}
+      <div class="mb-1">Remember me: {{ form.remember_me }}</div>
+      <input class="btn btn-primary" type="submit" value="Login" />
+    </form>
+  </div>
+{% endblock %}

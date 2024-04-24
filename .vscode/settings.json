@@ -1,0 +1,6 @@
+{
+    "workbench.preferredHighContrastColorTheme": "Default High Contrast",
+    "editor.formatOnPaste": true,
+    "files.autoSave": "afterDelay",
+    "editor.formatOnSave": true
+}

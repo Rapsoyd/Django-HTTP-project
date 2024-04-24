@@ -1,0 +1,13 @@
+{% extends "main.html" %}
+
+{% block title %}Add comment{% endblock %}
+<!--Если комментарий прошел валидацию-->
+{% block content %}
+    {% if comment %}
+        <h2>Your comment has been added.</h2>
+        <p><a href="{{ post.get_absolute_url }}">Back to the post</a></p>
+        <!--Если валидация не прошла или мы только перешли в форму комментария, то мы будем видеть comment_form-->
+    {% else %}
+        {% include "blog/includes/comment_form.html" %}
+    {% endif %}
+{% endblock %}

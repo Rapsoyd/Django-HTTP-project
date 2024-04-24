@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <a class="navbar-brand"
+           href="/">Legendary blog</a>
+        <button class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown"
+                aria-expanded="false"
+                aria-label="Переключатель навигации"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse"
+             id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active"
+                       aria-current="page"
+                       href="{% url 'signup' %}">Зарегистрироваться</a>
+                </li>
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <form action="{% url 'logout' %}"
+                              method="post">
+                            {% csrf_token %}
+                            <button type="submit"
+                                    class="nav-link btn btn-link">Выйти
+                            </button>
+                        </form>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link"
+                           href="{% url 'login' %}">Войти</a>
+                    </li>
+                {% endif %}
+                <li class="nav-item">
+                    <a class="nav-link"
+                       href="{% url 'user-profile' %}">
+                        <div class="modal-dialog modal-dialog-centered">Мой профиль</div>
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle"
+                       href="#"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">Выпадающий список ссылкой</a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="dropdown-item"
+                               href="#">Действие</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="#">Другое действие</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item"
+                               href="#">Что-то еще здесь</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

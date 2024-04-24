@@ -1,0 +1,40 @@
+{% extends "main.html" %}
+{% block content %}
+    <div class="card mb-3">
+        <img style="width:280px"
+             height="220px"
+             src="{{ post.thumbnail.url }}"
+             class="card-img-top"
+             alt="Картинка поста">
+        <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.text }}</p>
+            {% include 'blog/reaction_form.html' %}
+            <p class="card-text"><small class="text-body-secondary">Post updated at {{ post.updated }}</small></p>
+        </div>
+    </div>
+    <div class="row card mt-2">
+        {% with comments.count as total_comments %}
+            <h2>
+                {{ total_comments }} comment{{ total_comments|pluralize }}
+            </h2>
+            <hr class="mt-1 mb-1"/>
+        {% endwith %}
+        {% for comment in comments %}
+
+            <div class="comment">
+                <p class="text-muted fst-italic mb-2">
+                    Comment {{ forloop.counter }} by {{ comment.name }}
+                    {{ comment.created }}
+                </p>
+                {{ comment.body|safe }}
+
+            </div>
+            <hr class="mt-1 mb-1"/>
+        {% empty %}
+            <p>There are no comments.</p>
+        {% endfor %}
+
+        {% include "blog/includes/comment_form.html" %}
+    </div>
+{% endblock %}

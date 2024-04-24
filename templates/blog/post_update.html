@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% block content %}
+    <div class="card">
+        <div class="card-header">
+            Окно обновления статьи
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Обновить статью</h5>
+            <form method="post"
+                  action="{% url "post_update" slug=post.slug %}"
+                  enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <div class="d-grid gap-2 d-md-block mt-2">
+                    <button type="submit"
+                            class="btn btn-dark">Завершить обновление
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+<h2>Add a new comment</h2>
+<form method="post"
+      action="{% url "post_comment" post.id %}">
+    {% csrf_token %}
+    <div class="form-floating mb-3">
+        {{ comment_form.nickname }}
+        <label for="floatingTextarea">Ваш никнейм</label>
+    </div>
+    <div style="padding-bottom: 13px;" class="form-floating">
+        {{ comment_form.email }}
+        <label for="floatingTextarea">Почта</label>
+    </div>
+    <div class="form-floating">
+        {{ comment_form.body }}
+        <label for="floatingTextarea">Комментарии</label>
+    </div>
+    <div style="padding-top: 20px"><input style=""
+              class="btn btn-primary"
+              type="submit"
+              value="Сохранить комментарий"></div>
+</form>

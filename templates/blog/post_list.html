@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+    {% for post in posts %}
+        <div class="card mb-3">
+            <img style="width: 350px"
+                 src="{{ post.thumbnail.url }}"
+                 class="card-img-top"
+                 alt="Картинка поста"
+                 height='250px'>
+            <div class="card-body">
+                <a href="{{ post.get_absolute_url }}">
+                    <button type="button"
+                            class="btn btn-primary">{{ post.title }}</button>
+                </a>
+                <p style="padding-left: 20px; display: table-row; color: fuchsia">Реакций {{ post.reaction_count }}</p>
+                <p class="card-text">{{ post.text|slice:"30:" }}...</p>
+                <p class="card-text"><small class="text-body-secondary">{{ post.updated }}</small></p>
+            </div>
+        </div>
+    {% endfor %}
+    {% include 'blog/paginator.html' %}
+{% endblock %}

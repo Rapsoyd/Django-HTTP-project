@@ -1,0 +1,25 @@
+.title {
+    display: table-row;
+}
+
+.dad {
+    display: flex;
+    justify-content: space-between;
+    gap: 0;
+    padding-top: 100px;
+}
+
+.sidebar {
+    width: 300px;
+    padding: 20px;
+    height: 100%;
+    overflow: auto;
+    border-color: dimgrey;
+    border-width: 15px;
+    border-style: solid;
+    background-color: #111;
+}
+
+.content {
+    width: 100%;
+}

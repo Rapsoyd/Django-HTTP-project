@@ -1,0 +1,17 @@
+{% if is_paginated %}
+    <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            {% for page_number in page_obj.paginator.get_elided_page_range %}
+                {% if page_number == page_obj.number %}
+                    <li class="page-item active"
+                        aria-current="page">
+                        <span class="page-link">{{ page_number }}</span>
+                    </li>
+                {% else %}
+                    <li class="page-item"><a class="page-link"
+                                             href="?page={{ page_number }}">{{ page_number }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </nav>
+{% endif %}

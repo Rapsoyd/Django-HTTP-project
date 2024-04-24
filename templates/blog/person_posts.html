@@ -1,0 +1,33 @@
+{% extends "main.html" %} {% block content %} {% for post in posts %}
+<div class="card mb-3">
+  <img
+    style="width: 350px"
+    src="{{ post.thumbnail.url }}"
+    class="card-img-top"
+    alt="Картинка поста"
+    height="250px"
+  />
+  <div class="card-body">
+    <a href="{{ post.get_absolute_url }}">
+      <button type="button" class="btn btn-primary">{{ post.title }}</button>
+    </a>
+    <p class="card-text">{{ post.text|slice:"30:" }}...</p>
+    <form
+      method="post"
+      action="{% url 'delete_post' post.id %}"
+      style="padding-left: 70%"
+    >
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Удалить пост</button>
+    </form>
+    <a href="{% url 'post_update' slug=post.slug %}">
+      <button type="button" class="btn btn-primary">
+        Отредактировать пост
+      </button>
+    </a>
+    <p class="card-text">
+      <small class="text-body-secondary">{{ post.updated }}</small>
+    </p>
+  </div>
+</div>
+{% endfor %} {% include 'blog/paginator.html' %} {% endblock %}
